@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ronan Website</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="ronan_website.css">
+    </head> 
+    <body class="background_deep_blue">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark  background_deep_green">
+            <a class="navbar-brand" href="#">Ronan Tunney</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="#About">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#Projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#Contact">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+        <div class="container-fluid col-lg-6 background_normal_green pb-2 text-center">
+          <h1 id="About">About</h1>
+          <p>Hello there! I'm a mechanical engineering student from the University of Waterloo 
+            who loves exploring ideas and learning how the world works. I have internship 
+            experience spanning a variety of fields from aerospace, to construction, to 
+            software development. Through it all I've discovered that I love working on
+            difficult yet meaningful problems. You can find some of my personal projects 
+            below. Stay tuned for more to come!</p>
+            <img src="pictures/ronan_main_pic.jpg" class="img-fluid rounded-circle" alt="Ronan_Tunney">
+        </div>
+
+        <div class="container-fluid col-lg-6 background_pale_green pb-2 text-center">
+          <div class=" col-lg-12 text-center">
+              <h1 id="Projects">Projects</h1>
+              <p>I believe that the best way to learn anything is to ask hard
+                questions and reason out the answers for yourself. These questions
+                can often prove more elusive than the answers themselves though. This is why I enjoy
+                embarking on challenging projects which force me to explore the unkown and figure things out for myself.
+              </p>
+              <div class="row text-left">
+                <div class="col-lg-6">
+                  <h2>Fluid Simulations</h2>
+                  <p>I've always found fluid dynamics really interesting and recently decided
+                    to take my learning beyond the classroom by simulating their behaviour in C++. One 
+                    <a href="https://github.com/R0NAND/euler_fluid_simulation">method</a> 
+                    relied on representing the fluid as a velocity field that interacted width 
+                    itself over time to create the familiar swirls we see when mixing two fluids
+                    together. The other method used a technique called <a href="https://github.com/R0NAND/particle_hydrodynamics">
+                    Smooth Particle Hydrodynamics</a> where thousands of particles were finely tuned to interact with 
+                    each other in such a way that their collective behaviour would adequately 
+                    emulate the motion of an everyday fluid.
+                  </p>
+                  <div class="embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive" src="https://www.youtube.com/embed/wm4oHIMzqq8">
+                    </iframe>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <h2>Mini Segway</h2>
+                  <p>This was a fun little project that I put together with an arduino, battery, 
+                    two brushed DC motors and some scrap material I had lying around the house. 
+                    The overall concept is quite simple. If the robot begins to lean forward, 
+                    spin the wheels even more forward, so it starts leaning the other way and vice 
+                    versa. This was implemented using a PID controller that read input from an 
+                    MEMS gyroscope.</p>
+                    <div class="embed-responsive embed-responsive-4by3">
+                      <iframe class="embed-responsive" src="https://www.youtube.com/embed/ncuaXxe6Qv0">
+                      </iframe>
+                    </div>
+                </div>
+              </div>
+              <div class="row text-left">
+                <div class="col-lg-6">
+                  <h2>LED-Cube</h2>
+                  <p>This project took an awfully long time to solder, but was well worth the effort once
+                    it could finally make 3D animations. It consisted of a 5x5x5 matrix of red LEDs.
+                    the 25 vertical columns were hooked up to 25 independent arduino mega outputs, and each
+                    layer was connected to ground via 5 independently controlled transistors. This setup
+                    allowed for each 5x5 layer to be lit in a unique configuration one at a time. A viewer's 
+                    persistence of vision would then automatically blend these alternating layers together into a 3D animation.</p>
+                    <div class="embed-responsive embed-responsive-4by3">
+                      <iframe class="embed-responsive" src="https://www.youtube.com/embed/vzeN1L-n64c">
+                      </iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                  <h2>Quadcopter</h2>
+                  <p>Still a work on progress, but I figured I should include a video of it taking off. 
+                    The crash is mostly attributed to my poor piloting skills, but the controls and center of mass 
+                    do still require a fair amount of tuning. The controller is an Arduino Uno recieving input from a 
+                    radio and gyroscope. The Arduino processes this data to update the speed of the propellors at 250 Hz.
+                  </p>
+                    <div class="embed-responsive embed-responsive-4by3">
+                      <iframe class="embed-responsive" src="https://www.youtube.com/embed/BKyYdnfE7Kg">
+                      </iframe>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        
+        <div class="container-fluid col-lg-6 background_black pb-2 background_white_green">
+          <div class="container-fluid col-lg-6 background_black pb-2 text-center">
+            <h1 id="Contact">Contact</h1>
+            <p>Curious about anything on my page?</p>
+            <p>Just send me a message at rjtunney@edu.uwaterloo.ca</p>
+            <p>Cheers,</p>
+            <p>Ronan</p>
+          </div>
+        </div>
+    </body>
+</html>
