@@ -22,7 +22,7 @@ class RidgidCircle{
     this.y += this.v * dt;
     this.theta += this.omega * dt;
   }
-  draw(){
+  draw(ctx){
     ctx.fillStyle = "black";
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);

@@ -9,6 +9,16 @@ test_tree.insert(90, 60, 110, 70);
 test_tree.insert(40, 60, 50, 80);
 test_tree.insert(50, 50, 95, 60);
 test_tree.draw(ctx, test_tree.root, 0);
+console.log(test_tree);
+for(var i = 0; i < test_tree.objects.length; i++){
+    console.log(test_tree.getCollisionsList(test_tree.objects[i]));
+}
+test_tree.remove(test_tree.objects[0]);
+console.log("bwaaaaaa");
+for(var i = 0; i < test_tree.objects.length; i++){
+    console.log(test_tree.getCollisionsList(test_tree.objects[i]));
+}
+
 
 
 

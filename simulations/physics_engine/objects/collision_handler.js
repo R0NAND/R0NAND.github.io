@@ -9,28 +9,22 @@ class CollisionHandler{
                                    circle.y + circle.v * dt + circle.r*Math.sin(wall_normal));
     var stepped_side_2 = wall.side(circle.x + circle.u * dt + circle.r*Math.cos(wall_normal + Math.PI), 
                                    circle.y + circle.v * dt + circle.r*Math.sin(wall_normal + Math.PI));
-    if (initial_side_1 != stepped_side_1 || initial_side_2 != stepped_side_2){
+    var direction = wall.direction(circle.x, circle.y, circle.x + circle.u * dt, circle.y + circle.v * dt);
+    if (direction && (initial_side_1 != stepped_side_1) || (initial_side_2 != stepped_side_2)){
       var impulse = -1.5 * (circle.u * Math.cos(wall_normal) + circle.v * Math.sin(wall_normal)) * circle.m;
       var impulse_x = impulse * Math.cos(wall_normal);
       var impulse_y = impulse * Math.sin(wall_normal);
       circle.applyImpulse(impulse_x, impulse_y);
+    }else if(direction && initial_side_1 != initial_side_2){
+      circle.applyImpulse(0, 10);
     }
   }
-  static detectCircleCircle(circle_1, circle_2, dt){
-    var next_x_distance = (circle_1.x + circle_1.u * dt - circle_2.x - circle_2.u * dt);
-    var next_y_distance = (circle_1.y + circle_1.v * dt - circle_2.y - circle_2.v * dt);
-    var next_distance = Math.sqrt(next_x_distance * next_x_distance + next_y_distance * next_y_distance);
-    if (next_distance < circle_1.r + circle_2.r){
-      var current_x_distance = (circle_1.x - circle_2.x);
-      var current_y_distance = (circle_1.y - circle_2.y);
-      var current_distance = Math.sqrt(Math.pow(current_x_distance, 2) + Math.pow(current_y_distance, 2));
-      var time_of_collision = dt * (current_distance - circle_1.r - circle_2.r) / (current_distance - next_distance);
-      circle_1.x += time_of_collision * circle_1.u;
-      circle_1.y += time_of_collision * circle_1.v;
-      circle_2.x += time_of_collision * circle_2.u;
-      circle_2.y += time_of_collision * circle_2.v;
-      var x_distance = (circle_1.x - circle_2.x);
-      var y_distance = (circle_1.y - circle_2.y);
+  static CircleCircle(circle_1, circle_2){
+    var x_distance = (circle_1.x - circle_2.x);
+    var y_distance = (circle_1.y - circle_2.y);
+    var x_distance_stepped = ((circle_1.x + circle_1.u*dt) - (circle_2.x + circle_2.u * dt));
+    var y_distance_stepped = ((circle_1.y + circle_1.v*dt) - (circle_2.y + circle_2.v * dt));
+    if((x_distance_stepped * x_distance_stepped + y_distance_stepped * y_distance_stepped) < (x_distance * x_distance + y_distance * y_distance)){
       var collision_normal = Math.atan2(y_distance, x_distance);
       var v_normal_1 = Math.cos(collision_normal) * circle_1.u + Math.sin(collision_normal) * circle_1.v;
       var v_normal_2 = Math.cos(collision_normal) * circle_2.u + Math.sin(collision_normal) * circle_2.v;
@@ -42,10 +36,6 @@ class CollisionHandler{
       circle_1.v += (exit_v_normal_1 - v_normal_1) * Math.sin(collision_normal);
       circle_2.u += (exit_v_normal_2 - v_normal_2) * Math.cos(collision_normal);
       circle_2.v += (exit_v_normal_2 - v_normal_2) * Math.sin(collision_normal);
-      circle_1.x += circle_1.u * (dt - time_of_collision);
-      circle_1.y += circle_1.v * (dt - time_of_collision);
-      circle_2.x += circle_2.u * (dt - time_of_collision);
-      circle_2.y += circle_2.v * (dt - time_of_collision);
-    } 
+    }
   }
 }

@@ -19,7 +19,12 @@ class Wall{
     }
     return val;
   }
-  draw(){
+  direction(x_1, y_1, x_2, y_2){
+    var val_1 = Math.abs(this.a * x_1 + this.b * y_1 + this.c);
+    var val_2 = Math.abs(this.a * x_2 + this.b * y_2 + this.c);
+    return (val_2 < val_1);
+  }
+  draw(ctx){
     ctx.strokeStyle = "black";
     ctx.beginPath(); 
     ctx.moveTo(this.x_1, this.y_1);
