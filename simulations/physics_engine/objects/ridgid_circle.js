@@ -7,7 +7,7 @@ class RidgidCircle{
     this.u = u;
     this.v = v;
     this.theta = 0;
-    this.omega = 1;
+    this.omega = 0;
   }
   applyForce(f_x, f_y, dt){
     this.u += f_x / this.m * dt;

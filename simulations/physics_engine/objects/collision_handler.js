@@ -16,7 +16,10 @@ class CollisionHandler{
       var impulse_y = impulse * Math.sin(wall_normal);
       circle.applyImpulse(impulse_x, impulse_y);
     }else if(direction && initial_side_1 != initial_side_2){
-      circle.applyImpulse(0, 10);
+      var impulse = -1.5 * (circle.u * Math.cos(wall_normal) + circle.v * Math.sin(wall_normal)) * circle.m;
+      var impulse_x = 2 * impulse / Math.abs(impulse) * Math.cos(wall_normal) * circle.m;
+      var impulse_y = 2 * impulse / Math.abs(impulse) * Math.sin(wall_normal) * circle.m;
+      circle.applyImpulse(impulse_x, impulse_y);
     }
   }
   static CircleCircle(circle_1, circle_2){
