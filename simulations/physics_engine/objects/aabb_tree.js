@@ -5,15 +5,15 @@ class AABBTree{
     this.count = 0;
   }
 
-  insert(min_x, min_y, max_x, max_y, shape){
+  insert(aabb, shape){
     var right_selected = true;
     if(this.objects.length == 0){
-      var root = new AABBLeaf(min_x, min_y, max_x, max_y, null, shape);
+      var root = new AABBLeaf(aabb.min_x, aabb.min_y, aabb.max_x, aabb.max_y, null, shape);
       this.objects.push(root);
       this.root = root;
       return(root);
     }else{
-      var new_object = new AABBLeaf(min_x, min_y, max_x, max_y, null, shape);
+      var new_object = new AABBLeaf(aabb.min_x, aabb.min_y, aabb.max_x, aabb.max_y, null, shape);
       var branch = this.root;
       var hit_bottom = false;
       do{
@@ -96,7 +96,7 @@ class AABBTree{
       var stack = [this.root];
       while(stack.length){
         var node = stack.pop();
-        if(this.doTheyIntersect(node, this.objects[i])){
+        if(AABB.doTheyCollide(node, this.objects[i])){
           if(node.left_child){
             stack.push(node.left_child);
           }
@@ -116,10 +116,6 @@ class AABBTree{
       this.objects[i].explored = false;
     }
     return collision_list;
-  }
-  
-  doTheyIntersect(aabb_1, aabb_2){
-    return (aabb_1.max_x > aabb_2.min_x && aabb_1.min_x < aabb_2.max_x && aabb_1.max_y > aabb_2.min_y && aabb_1.min_y < aabb_2.max_y);
   }
 
   draw(ctx, node, color){

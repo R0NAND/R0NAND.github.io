@@ -1,5 +1,31 @@
-class AABBNode{
+// RENAME FILE
+class AABB{
+  constructor(min_x, min_y, max_x, max_y){
+    this.min_x = min_x;
+    this.min_y = min_y;
+    this.max_x = max_x;
+    this.max_y = max_y;
+  }
+
+  doesItFit(aabb){
+    return (this.min_x < aabb.min_x && this.max_x > aabb.max_x && this.min_y < aabb.min_y && this.max_y > aabb.max_y);
+  }
+
+  fatten(fatness){
+    this.min_x -= fatness;
+    this.min_y -= fatness;
+    this.max_x += fatness;
+    this.max_y += fatness;
+  }
+
+  static doTheyCollide(aabb_1, aabb_2){
+    return (aabb_1.max_x > aabb_2.min_x && aabb_1.min_x < aabb_2.max_x && aabb_1.max_y > aabb_2.min_y && aabb_1.min_y < aabb_2.max_y);
+  }
+}
+
+class AABBNode extends AABB{
   constructor(min_x, min_y, max_x, max_y, parent){
+    super(min_x, min_y, max_x, max_y);
     this.min_x = min_x;
     this.min_y = min_y;
     this.max_x = max_x;
