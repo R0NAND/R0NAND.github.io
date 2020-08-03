@@ -56,8 +56,7 @@ class PolygonShape{
     return total;
   }
   draw(canvas, x, y, theta){
-    canvas.fillStyle = "black";
-    canvas.strokeStyle = "white";
+    canvas.strokeStyle = "black";
     canvas.beginPath();
     canvas.moveTo(x + Math.cos(theta) * this.vertices[0][0] - Math.sin(theta) * this.vertices[0][1], 
                   y + Math.sin(theta) * this.vertices[0][0] + Math.cos(theta) * this.vertices[0][1]);
@@ -66,6 +65,6 @@ class PolygonShape{
                     y + Math.sin(theta) * this.vertices[i][0] + Math.cos(theta) * this.vertices[i][1]);
     }
     canvas.closePath();
-    canvas.fill();
+    canvas.stroke();
   }
 }

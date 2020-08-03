@@ -14,11 +14,10 @@ class CircleShape{
     return 0.5 * Math.PI * Math.pow(this.r, 4);
   }
   draw(canvas, x, y, theta){
-    canvas.fillStyle = "black";
-    canvas.strokeStyle = "white";
+    canvas.strokeStyle = "black";
     canvas.beginPath();
     canvas.arc(x, y, this.r, 0, 2*Math.PI);
-    canvas.fill();
+    canvas.stroke();
     canvas.beginPath();
     canvas.moveTo(x, y);
     canvas.lineTo(x + this.r * Math.cos(theta), y + this.r * Math.sin(theta));
