@@ -71,18 +71,18 @@ right_wall.setStatic();
 
 var test_spring = new Spring(test_body_1, [test_body_1.x, test_body_1.y], test_body_2, [test_body_2.x, test_body_2.y], 100, 1);
 
-ronan_world.addBody(test_body_1);
-ronan_world.addBody(test_body_2);
-ronan_world.addBody(test_body_3);
-ronan_world.addBody(test_body_4);
+//ronan_world.addBody(test_body_1);
+//ronan_world.addBody(test_body_2);
+//ronan_world.addBody(test_body_3);
+//ronan_world.addBody(test_body_4);
 ronan_world.addBody(test_platform);
 ronan_world.addBody(left_wall);
 ronan_world.addBody(right_wall);
 
-ronan_world.addBody(box_1);
+/*ronan_world.addBody(box_1);
 ronan_world.addBody(box_2);
 ronan_world.addBody(box_3);
-ronan_world.addBody(box_4);
+ronan_world.addBody(box_4);*/
 
 var gui_interface = new GuiInterface(ctx, "shape_type", "size", "density", "restitution", "friction", "isStatic");
 var gui_spring;
@@ -91,7 +91,7 @@ function updateAndDraw(){
   if(clicked == true && held != true && mousePos[0] < 50 && mousePos[1] < 50){
     var new_body = gui_interface.generateBody();
     ronan_world.addBody(new_body);
-    gui_spring = new Spring(new_body, mousePos, null, mousePos, 1000, 1);
+    gui_spring = new Spring(new_body, mousePos, null, mousePos, new_body.mass * 10, 2 * Math.sqrt(new_body.mass * new_body.mass * 10));
     ronan_world.addSpring(gui_spring);
     clicked = false;
     held = true;

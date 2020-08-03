@@ -27,7 +27,8 @@ class RigidBody{
     if(!this.static){
       this.u += f_x / this.mass * dt;
       this.v += f_y / this.mass * dt;
-      this.omage += (f_y * (x - this.x) - f_x * (y - this.y)) / this.m_inertia * dt;
+      this.omega += (f_y * (x - this.x) - f_x * (y - this.y)) / this.m_inertia * dt;
+      console.log(x, this.x, y, this.y);
     }
   }
   applyUniformForce(f_x, f_y, dt){
