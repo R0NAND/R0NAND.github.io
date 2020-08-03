@@ -1,4 +1,35 @@
+<h1>Ronan's Very Unstable Home Baked Physics Engine</h1>
+<h2>A 2D physics engine written entirely in javascript with no external libraries</h2>
+<p>Adjust the physical parameters of you spawned objects with the buttons below. 
+    Then drag in your desired shape from the top left. The glitches just add to the fun! 
+    Stay tuned for updates and a guide on how to write your own.</p>
+<input type="checkbox" id="showAABB" name="show_aabb" value="show_aabb" checked="true">
+<label for="vehicle1"> Show AABB Tree</label><br>
+
+<input type="radio" id="circle" name="shape_type" value="circle" checked>
+<label for="circle">Circle</label>
+<input type="radio" id="triangle" name="shape_type" value="triangle">
+<label for="circle">Triangle</label>
+<input type="radio" id="square" name="shape_type" value="square">
+<label for="circle">Square</label>
+
+
+<div class="slidecontainer">
+    <label for="size">Size: </label>
+    <input type="range" min="10" max="100" value="50" class="slider" id="size">
+    <label for="density">Density: </label>
+    <input type="range" min="1" max="100" value="10" class="slider" id="density">
+    <label for="restitution">Restitution: </label>
+    <input type="range" min="0" max="100" value="50" class="slider" id="restitution">
+    <label for="friction">Friction: </label>
+    <input type="range" min="0" max="100" value="50" class="slider" id="friction">
+</div>
+
+<input type="checkbox" id="isStatic" name="static_shape" value="Static">
+<label for="vehicle1"> Static</label><br>
+
 <canvas id="introSim" width="200" height="200">
+    <script src="objects/gui_interface.js"></script>
     <script src="objects/aabb_node.js"></script>
     <script src="objects/aabb_tree.js"></script>
     <script src="objects/collision_detector.js"></script>
@@ -10,5 +41,6 @@
     <script src="objects/fixture.js"></script>
     <script src="objects/wall.js"></script>
     <script src="objects/world.js"></script>
+    <script src="objects/spring.js"></script>
     <script src="simulation.js"></script>
 </canvas>

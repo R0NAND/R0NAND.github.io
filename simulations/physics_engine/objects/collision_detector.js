@@ -148,7 +148,6 @@ class CollisionDetector{
         }
       }
     }
-    console.log(collision_point);
     return [collision_point, penetration_normal]
   }
 
@@ -182,7 +181,6 @@ class CollisionDetector{
     var collision_point;
 
     for(var n = 0; n < normals.length; n++){
-      console.log(normals[n]);
       var polygon_min = normals[n][0] * polygon_points[0][0] + normals[n][1] * polygon_points[0][1]; 
       var polygon_max = polygon_min;
       for (var p = 1; p < polygon_points.length; p++){
@@ -229,10 +227,5 @@ class CollisionDetector{
     this.collision_tree.draw(ctx, this.collision_tree.root, 0);
   }
 
-
-
-  detectCollision(){
-
-  }
 }
 

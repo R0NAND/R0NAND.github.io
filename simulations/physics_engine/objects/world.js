@@ -3,6 +3,7 @@ class World{
     this.g_x = 0;
     this.g_y = 0;
     this.bodies = [];
+    this.springs = [];
     this.walls = [];
     this.dt = dt;
 
@@ -19,13 +20,25 @@ class World{
       this.collisionDetector.add(new_body.fixtures[i].shape.generateAABB(new_body.x, new_body.y, new_body.theta), new_body.fixtures[i]);
     }
   }
-  addWall(new_wall){
-    this.walls.push(new_wall);
+  addSpring(new_spring){
+    console.log("asdasd");
+    this.springs.push(new_spring);
+    console.log(this.springs);
+  }
+  deleteSpring(spring){
+    for(var i = 0; i < this.springs.length; i++){
+      if(spring == this.springs[i]){
+        this.springs.splice(i, 1);
+      }
+    }
   }
   step(){
+    for(var i = 0; i < this.springs.length; i++){
+      this.springs[i].step(this.dt);
+    }
     for (var i = 0; i < this.bodies.length; i++){
       this.bodies[i].applyUniformForce(this.g_x * this.bodies[i].mass, this.g_y * this.bodies[i].mass, this.dt);
-      this.bodies[i].displace(this.dt);
+      this.bodies[i].step(this.dt);
     }
     this.collisionDetector.update();
     var collisions = this.collisionDetector.getCollisions();
@@ -39,6 +52,9 @@ class World{
     for (var i = 0; i < this.bodies.length; i++){
       this.bodies[i].draw(ctx);
     }
-    this.collisionDetector.draw(ctx);
+    for(var i = 0; i < this.springs.length; i++){
+      this.springs[i].draw(ctx);
+    }
+    if(document.getElementById("showAABB").checked){this.collisionDetector.draw(ctx)};
   }
 }

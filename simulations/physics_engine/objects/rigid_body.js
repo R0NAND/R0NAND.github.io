@@ -24,15 +24,23 @@ class RigidBody{
     this.omega += (p_y * (i_x - this.x) - p_x * (i_y - this.y)) / this.m_inertia; 
   }
   applyForce(x, y, f_x, f_y, dt){
-    this.u += f_x / this.mass * dt;
-    this.v += f_y / this.mass * dt;
-    this.omage += (f_y * (x - this.x) - f_x * (y - this.y)) / this.m_inertia * dt;
+    if(!this.static){
+      this.u += f_x / this.mass * dt;
+      this.v += f_y / this.mass * dt;
+      this.omage += (f_y * (x - this.x) - f_x * (y - this.y)) / this.m_inertia * dt;
+    }
   }
   applyUniformForce(f_x, f_y, dt){
-    this.u += f_x / this.mass * dt;
-    this.v += f_y / this.mass * dt;
+    if(!this.static){
+      this.u += f_x / this.mass * dt;
+      this.v += f_y / this.mass * dt;
+    }
   }
-  displace(dt){
+  displace(x, y){
+    this.x += x;
+    this.y += y;
+  }
+  step(dt){
     if(!this.static){
       if (this.omega > 3){
         this.omega = 3;
@@ -55,21 +63,8 @@ class RigidBody{
     this.omega = 0;
   }
   draw(canvas){
-    canvas.fillStyle = "black";
-    canvas.beginPath();
-    for(var s = 0; s < this.fixtures.length; s++){
-      if(this.fixtures[s].shape instanceof CircleShape){
-        canvas.arc(this.x + Math.cos(this.theta) * this.fixtures[s].shape.x, this.y + this.fixtures[s].shape.y, this.fixtures[s].shape.r, 0, 2*Math.PI);
-      }else{
-        canvas.moveTo(this.x + Math.cos(this.theta) * this.fixtures[s].shape.vertices[0][0] - Math.sin(this.theta) * this.fixtures[s].shape.vertices[0][1], 
-                      this.y + Math.sin(this.theta) * this.fixtures[s].shape.vertices[0][0] + Math.cos(this.theta) * this.fixtures[s].shape.vertices[0][1]);
-        for(var i = 1; i < this.fixtures[s].shape.vertices.length; i++){
-          canvas.lineTo(this.x + Math.cos(this.theta) * this.fixtures[s].shape.vertices[i][0] - Math.sin(this.theta) * this.fixtures[s].shape.vertices[i][1], 
-                        this.y + Math.sin(this.theta) * this.fixtures[s].shape.vertices[i][0] + Math.cos(this.theta) * this.fixtures[s].shape.vertices[i][1]);
-        }
-        canvas.closePath();
-      }
+    for(var i = 0; i < this.fixtures.length; i++){
+      this.fixtures[i].shape.draw(canvas, this.x, this.y, this.theta);
     }
-    canvas.fill();
   }
 }

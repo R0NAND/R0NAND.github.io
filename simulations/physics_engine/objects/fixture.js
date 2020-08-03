@@ -3,7 +3,7 @@ class Fixture{
     this.shape = shape;
     this.restitution = restitution;
     this.friction = friction;
-    this.density = restitution;
+    this.density = density;
   }
   setRestitution(r){
     this.restitution = r;

@@ -1,7 +1,7 @@
 class PolygonShape{
   constructor(vertices){
     this.vertices = vertices;
-    this.setCentroidOrigin;
+    this.setCentroidOrigin();
   }
   generateAABB(x, y, angle){
     var min_x = x + this.vertices[0][0] * Math.cos(angle) - this.vertices[0][1] * Math.sin(angle);
@@ -36,8 +36,8 @@ class PolygonShape{
     }
     x_total += (this.vertices[this.vertices.length - 1][0] + this.vertices[0][0]) * (this.vertices[this.vertices.length - 1][0] * this.vertices[0][1] - this.vertices[0][0] * this.vertices[this.vertices.length - 1][1]);
     y_total += (this.vertices[this.vertices.length - 1][1] + this.vertices[0][1]) * (this.vertices[this.vertices.length - 1][0] * this.vertices[0][1] - this.vertices[0][0] * this.vertices[this.vertices.length - 1][1]); 
-    x_total /= 6 * this.calculateArea;
-    y_total /= 6 * this.calculateArea;
+    x_total /= 6 * this.calculateArea();
+    y_total /= 6 * this.calculateArea();
     for(var i = 0; i < this.vertices.length; i++){
       this.vertices[i][0] -= x_total;
       this.vertices[i][1] -= y_total;
@@ -54,5 +54,18 @@ class PolygonShape{
     total += (this.vertices[this.vertices.length - 1][0] * this.vertices[0][1] + 2 * this.vertices[this.vertices.length - 1][0] * this.vertices[this.vertices.length - 1][0] + 2 * this.vertices[0][0] * this.vertices[0][0] + this.vertices[0][0] * this.vertices[this.vertices.length - 1][1]) * triangle_area;
     total /= 24;
     return total;
+  }
+  draw(canvas, x, y, theta){
+    canvas.fillStyle = "black";
+    canvas.strokeStyle = "white";
+    canvas.beginPath();
+    canvas.moveTo(x + Math.cos(theta) * this.vertices[0][0] - Math.sin(theta) * this.vertices[0][1], 
+                  y + Math.sin(theta) * this.vertices[0][0] + Math.cos(theta) * this.vertices[0][1]);
+    for(var i = 1; i < this.vertices.length; i++){
+      canvas.lineTo(x + Math.cos(theta) * this.vertices[i][0] - Math.sin(theta) * this.vertices[i][1], 
+                    y + Math.sin(theta) * this.vertices[i][0] + Math.cos(theta) * this.vertices[i][1]);
+    }
+    canvas.closePath();
+    canvas.fill();
   }
 }
