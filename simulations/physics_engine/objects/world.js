@@ -21,9 +21,7 @@ class World{
     }
   }
   addSpring(new_spring){
-    console.log("asdasd");
     this.springs.push(new_spring);
-    console.log(this.springs);
   }
   deleteSpring(spring){
     for(var i = 0; i < this.springs.length; i++){

@@ -40,7 +40,6 @@ class GuiInterface{//kinda redundant name I know :p
                                                  0.01 * document.getElementById(this.restitution_slider).value); 
     var new_body = new RigidBody(30, 30, 0, 0, 0, 0);
     new_body.addFixture(new_body_fixture);
-    console.log(new_body.mass);
     this.new_body = false;
     this.holding = true;
     return new_body;

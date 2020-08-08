@@ -1,5 +1,6 @@
 class CollisionHandler{
   static impulseResponse(collision){
+    console.log(collision);
     var restitution;
     if(collision.fixture_1.restitution > collision.fixture_2.restitution){
       restitution = collision.fixture_2.restitution;
@@ -68,13 +69,15 @@ class CollisionHandler{
         collision.fixture_2.body.applyImpulse(collision.location[0], collision.location[1], impulse_2[0], impulse_2[1]);
       }
     }else{
-      var k_disp = 0.1; //constant to affect how much objects get displaced from one another
+      var slop = 1;
+      var percent = 0.4;
+      var correction = Math.max(collision.penetration - slop, 0) * percent; 
       if(com_1_direction > 0){
-        if(!collision.fixture_1.body.static){collision.fixture_1.body.displace(k_disp * collision.normal[0], k_disp * collision.normal[1]);}
-        if(!collision.fixture_2.body.static){collision.fixture_2.body.displace(k_disp * -collision.normal[0], k_disp * -collision.normal[1]);}
+        if(!collision.fixture_1.body.static){collision.fixture_1.body.displace(correction * collision.normal[0], correction * collision.normal[1]);}
+        if(!collision.fixture_2.body.static){collision.fixture_2.body.displace(correction * -collision.normal[0], correction * -collision.normal[1]);}
       }else{
-        if(!collision.fixture_1.body.static){collision.fixture_1.body.displace(k_disp * -collision.normal[0], k_disp * -collision.normal[1]);}
-        if(!collision.fixture_2.body.static){collision.fixture_2.body.displace(k_disp * collision.normal[0], k_disp * collision.normal[1]);}
+        if(!collision.fixture_1.body.static){collision.fixture_1.body.displace(correction * -collision.normal[0], correction * -collision.normal[1]);}
+        if(!collision.fixture_2.body.static){collision.fixture_2.body.displace(correction * collision.normal[0], correction * collision.normal[1]);}
       }
       impulse = 0;
     }

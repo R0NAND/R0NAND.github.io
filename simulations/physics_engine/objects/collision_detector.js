@@ -29,7 +29,7 @@ class CollisionDetector{
     for(var i = 0; i < candidates.length; i++){
       var collision_result = this.doTheyCollide(candidates[i][0], candidates[i][1]);
       if(collision_result){
-        collisions.push(new CollisionManifold(candidates[i][0], candidates[i][1], collision_result[0], collision_result[1]));
+        collisions.push(new CollisionManifold(candidates[i][0], candidates[i][1], collision_result[0], collision_result[1], collision_result[2]));
       }
     }
     return collisions;
@@ -64,7 +64,8 @@ class CollisionDetector{
     if(distance <= circle_1.r + circle_2.r){
       var collision_coordinates = [circle_1_x + x_distance / 2, circle_1_y + y_distance / 2];
       var collision_normal = [x_distance /distance, y_distance / distance];
-      return [collision_coordinates, collision_normal];
+      var penetration = circle_1.r + circle_2.r - distance;
+      return [collision_coordinates, collision_normal, penetration];
     }else{
       return null;
     }
@@ -148,7 +149,7 @@ class CollisionDetector{
         }
       }
     }
-    return [collision_point, penetration_normal]
+    return [collision_point, penetration_normal, min_penetration];
   }
 
   detectCollisionPolygonCircle(polygon, x_p, y_p, theta_p, circle, x_c, y_c){
@@ -166,7 +167,7 @@ class CollisionDetector{
       var y_distance = polygon_points[p][1] - circle_y;
       var distance = Math.sqrt(Math.pow(x_distance, 2) + Math.pow(y_distance, 2));
       if (distance < circle.r){
-        return [polygon_points[p], [x_distance / distance, y_distance / distance]];
+        return [polygon_points[p], [x_distance / distance, y_distance / distance], circle.r - distance];
       } 
     }
 
@@ -210,7 +211,7 @@ class CollisionDetector{
         }
       }
     }
-    return [collision_point, penetration_normal];
+    return [collision_point, penetration_normal, min_penetration];
   }
 
   getNormal(x_1, y_1, x_2, y_2){

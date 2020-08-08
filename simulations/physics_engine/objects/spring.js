@@ -79,8 +79,6 @@ class Spring{
     }else{
       end_2 = this.location_2;
     }
-    console.log(end_2, end_1);
-
     canvas.strokeStyle = "black";
     canvas.beginPath();
     canvas.moveTo(end_1[0], end_1[1]);

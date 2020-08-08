@@ -72,17 +72,17 @@ right_wall.setStatic();
 var test_spring = new Spring(test_body_1, [test_body_1.x, test_body_1.y], test_body_2, [test_body_2.x, test_body_2.y], 100, 1);
 
 //ronan_world.addBody(test_body_1);
-//ronan_world.addBody(test_body_2);
+ronan_world.addBody(test_body_2);
 //ronan_world.addBody(test_body_3);
-//ronan_world.addBody(test_body_4);
+ronan_world.addBody(test_body_4);
 ronan_world.addBody(test_platform);
 ronan_world.addBody(left_wall);
 ronan_world.addBody(right_wall);
 
-/*ronan_world.addBody(box_1);
+ronan_world.addBody(box_1);
 ronan_world.addBody(box_2);
 ronan_world.addBody(box_3);
-ronan_world.addBody(box_4);*/
+ronan_world.addBody(box_4);
 
 var gui_interface = new GuiInterface(ctx, "shape_type", "size", "density", "restitution", "friction", "isStatic");
 var gui_spring;
