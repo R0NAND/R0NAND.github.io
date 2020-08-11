@@ -8,12 +8,12 @@ class AABBTree{
   insert(aabb, shape){
     var right_selected = true;
     if(this.objects.length == 0){
-      var root = new AABBLeaf(aabb.min_x, aabb.min_y, aabb.max_x, aabb.max_y, null, shape);
+      var root = new AABBLeaf(aabb.min, aabb.max, null, shape);
       this.objects.push(root);
       this.root = root;
       return(root);
     }else{
-      var new_object = new AABBLeaf(aabb.min_x, aabb.min_y, aabb.max_x, aabb.max_y, null, shape);
+      var new_object = new AABBLeaf(aabb.min, aabb.max, null, shape);
       var branch = this.root;
       var hit_bottom = false;
       do{
@@ -31,7 +31,7 @@ class AABBTree{
           } 
         }
       }while(!hit_bottom);
-      var new_object_parent = new AABBBranch(null, null, null, null, branch.parent, branch, new_object);
+      var new_object_parent = new AABBBranch(new Vec2(0, 0), new Vec2(0, 0), branch.parent, branch, new_object);
       branch.parent = new_object_parent;
       new_object.parent = new_object_parent;
       if(branch == this.root){
@@ -53,7 +53,7 @@ class AABBTree{
     }
   }
 
-  remove(leaf){
+  remove(leaf){  //Right now this breaks with one object
     var node = leaf;
     var parent = node.parent;
     var neighbor;
@@ -121,11 +121,11 @@ class AABBTree{
   draw(ctx, node, color){
     var colors = ["red", "orange", "green", "blue", "purple", "pink"] 
     ctx.strokeStyle = colors[color];
-    ctx.strokeRect(node.min_x, node.min_y, node.max_x - node.min_x, node.max_y - node.min_y);
+    ctx.strokeRect(node.min.x, node.min.y, node.max.x - node.min.x, node.max.y - node.min.y);
     /*if(node.parent){
       ctx.beginPath();
-      ctx.moveTo((node.parent.min_x + node.parent.max_x) / 2, (node.parent.min_y + node.parent.max_y) / 2);
-      ctx.lineTo((node.min_x + node.max_x) / 2, (node.min_y + node.max_y) / 2);
+      ctx.moveTo((node.parent.min.x + node.parent.max.x) / 2, (node.parent.min.y + node.parent.max.y) / 2);
+      ctx.lineTo((node.min.x + node.max.x) / 2, (node.min.y + node.max.y) / 2);
       ctx.stroke();
     }*/
     if(node.left_child){this.draw(ctx, node.left_child, color + 1);}

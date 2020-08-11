@@ -1,11 +1,13 @@
 class CircleShape{
   constructor(x, y, r){
-    this.x = x;
-    this.y = y;
+    this.position = new Vec2(x, y);
     this.r = r;
   }
-  generateAABB(x, y, angle){
-    return new AABB(x - this.r, y - this.r, x + this.r, y + this.r);
+  generateAABB(translation, rotation){
+    var circle_center = Vec2.add(translation, this.position);
+    var min = Vec2.subtract(circle_center, new Vec2(this.r, this.r));
+    var max = Vec2.add(circle_center, new Vec2(this.r, this.r));
+    return new AABB(min, max);
   }
   calculateArea(){
     return Math.PI * this.r * this.r;
@@ -13,14 +15,14 @@ class CircleShape{
   calculateAreaMomentOfInerta(){
     return 0.5 * Math.PI * Math.pow(this.r, 4);
   }
-  draw(canvas, x, y, theta){
+  draw(canvas, translation, rotation){
     canvas.strokeStyle = "black";
     canvas.beginPath();
-    canvas.arc(x, y, this.r, 0, 2*Math.PI);
+    canvas.arc(translation.x, translation.y, this.r, 0, 2 * Math.PI);
     canvas.stroke();
     canvas.beginPath();
-    canvas.moveTo(x, y);
-    canvas.lineTo(x + this.r * Math.cos(theta), y + this.r * Math.sin(theta));
+    canvas.moveTo(translation.x, translation.y);
+    canvas.lineTo(translation.x + this.r * Math.cos(rotation), translation.y + this.r * Math.sin(rotation));
     canvas.stroke();
   }
 }

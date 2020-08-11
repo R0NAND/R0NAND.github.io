@@ -8,7 +8,7 @@ class GuiInterface{//kinda redundant name I know :p
     this.friction_slider = friction;
     this.static_check = is_static;
     
-    this.mousePos = [0, 0];
+    this.mousePos = new Vec2(0, 0);
     this.shape = null;
     this.holding = false;
     this.new_body = false;
@@ -27,11 +27,11 @@ class GuiInterface{//kinda redundant name I know :p
     if(shape_value == "circle"){
       this.shape = new CircleShape(0, 0, size / 2);
     }else if(shape_value == "square"){
-      this.shape = new PolygonShape([[0,0], [size, 0], [size, size], [0, size]]);
+      this.shape = new PolygonShape([new Vec2(0,0), new Vec2(size, 0), new Vec2(size, size), new Vec2(0, size)]);
     }else if(shape_value == "triangle"){
-      this.shape = new PolygonShape([[0,0], [size, 0], [size/2, size * 0.866]]);
+      this.shape = new PolygonShape([new Vec2(0,0), new Vec2(size, 0), new Vec2(size / 2, size * 0.866)]);
     }
-    this.shape.draw(this.canvas, 30, 30, 0);
+    this.shape.draw(this.canvas, new Vec2(30, 30), 0);
   }
 
   generateBody(){
@@ -46,14 +46,14 @@ class GuiInterface{//kinda redundant name I know :p
   }
 
   static onClick(event){
-    if(mousePos[0] < 50 && mousePos[1] < 50){
+    if(mousePos.x < 50 && mousePos.y < 50){
       clicked = true;
     }
   }
 
   static onMove(event){
-    mousePos[0] = event.clientX - canvas.offsetLeft;
-    mousePos[1] = event.clientY - canvas.offsetTop;;
+    mousePos.x = event.clientX - canvas.offsetLeft;
+    mousePos.y = event.clientY - canvas.offsetTop;;
   }
 
   static onUp(event){

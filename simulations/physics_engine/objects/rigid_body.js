@@ -1,10 +1,8 @@
 class RigidBody{
   constructor(x, y, u, v, t, o){
     this.mass = 0;
-    this.x = x;
-    this.y = y;
-    this.u = u;
-    this.v = v;
+    this.position = new Vec2(x, y);
+    this.velocity = new Vec2(u, v);
     this.m_inertia = 0;
     this.theta = t;
     this.omega = o;
@@ -13,42 +11,44 @@ class RigidBody{
   }
   addFixture(fixture){
     fixture.body = this;
-
     this.mass = fixture.shape.calculateArea() * fixture.density;
     this.m_inertia = fixture.shape.calculateAreaMomentOfInerta() * fixture.density;
     this.fixtures.push(fixture);
   }
-  applyImpulse(i_x, i_y, p_x, p_y){
-    this.u += p_x / this.mass;
-    this.v += p_y / this.mass;
-    this.omega += (p_y * (i_x - this.x) - p_x * (i_y - this.y)) / this.m_inertia; 
+  applyImpulse(impulse, location){
+    var velocity_change = Vec2.multiply(impulse, 1 / this.mass);
+    this.velocity = Vec2.add(this.velocity, velocity_change);
+    var location_from_center = Vec2.subtract(location, this.position);
+    var spin_change = Vec2.crossProduct(location_from_center, impulse) / this.m_inertia;
+    this.omega += spin_change;
   }
-  applyForce(x, y, f_x, f_y, dt){
+  applyForce(force, location, dt){
     if(!this.static){
-      this.u += f_x / this.mass * dt;
-      this.v += f_y / this.mass * dt;
-      this.omega += (f_y * (x - this.x) - f_x * (y - this.y)) / this.m_inertia * dt;
+      var velocity_change = Vec2.multiply(force, dt / this.mass);
+      this.velocity = Vec2.add(this.velocity, velocity_change);
+      var location_from_center = Vec2.subtract(location, this.position);
+      var spin_change = Vec2.crossProduct(location_from_center, force) * dt / this.m_inertia;
+      this.omega += spin_change;
     }
   }
-  applyUniformForce(f_x, f_y, dt){
+  applyUniformForce(force, dt){
     if(!this.static){
-      this.u += f_x / this.mass * dt;
-      this.v += f_y / this.mass * dt;
+      var velocity_change = Vec2.multiply(force, dt / this.mass);
+      this.velocity = Vec2.add(this.velocity, velocity_change);
     }
   }
-  displace(x, y){
-    this.x += x;
-    this.y += y;
+  displace(displacement){
+    this.position = Vec2.add(this.position, displacement);
   }
   step(dt){
     if(!this.static){
-      if (this.omega > 3){
-        this.omega = 3;
-      }else if (this.omega < -3){
-        this.omega = -3;
+      if (this.omega > 30){  //REVISIT MAX SPEED CONSIDERATIONS
+        this.omega = 30;
+      }else if (this.omega < -30){
+        this.omega = -30;
       }
-      this.x += this.u * dt;
-      this.y += this.v * dt;
+      var position_change = Vec2.multiply(this.velocity, dt);
+      this.position = Vec2.add(this.position, position_change);
       this.theta += this.omega * dt;
     }else{
       this.u = 0;
@@ -58,13 +58,12 @@ class RigidBody{
   }
   setStatic(){
     this.static = 1;
-    this.u = 0;
-    this.v = 0;
+    this.velocity.set(0, 0);
     this.omega = 0;
   }
   draw(canvas){
     for(var i = 0; i < this.fixtures.length; i++){
-      this.fixtures[i].shape.draw(canvas, this.x, this.y, this.theta);
+      this.fixtures[i].shape.draw(canvas, this.position, this.theta);
     }
   }
 }
