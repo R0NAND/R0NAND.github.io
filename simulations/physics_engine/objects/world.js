@@ -5,6 +5,7 @@ class World{
     this.springs = [];
     this.walls = [];
     this.dt = dt;
+    this.num_iterations = 10;
 
     this.collisionDetector = new CollisionDetector();
     this.counter = 0;
@@ -38,8 +39,15 @@ class World{
     }
     this.collisionDetector.update();
     var collisions = this.collisionDetector.getCollisions();
+
+    for(var n = 0; n < this.num_iterations; n++){
+      for(var i = 0; i < collisions.length; i++){
+        CollisionHandler.impulseResponse(collisions[i]);
+      }
+    }
+
     for(var i = 0; i < collisions.length; i++){
-      CollisionHandler.impulseResponse(collisions[i]);
+      CollisionHandler.separateBodies(collisions[i]);
     }
   }
   draw(ctx){

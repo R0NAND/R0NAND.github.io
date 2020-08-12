@@ -15,6 +15,9 @@ class Vec2{
   static crossProduct(vector_1, vector_2){
     return vector_1.x * vector_2.y - vector_1.y * vector_2.x;
   }
+  static zCrossProduct(scalar, vector){ //cross product of a vector pointing perpendicular to world plane with vector parallel to world plane
+    return new Vec2(-scalar * vector.y, scalar * vector.x);
+  }
   static getNormal(vector){
     return Vec2.normalize(Vec2.rotate(vector, -Math.PI / 2));
   }
