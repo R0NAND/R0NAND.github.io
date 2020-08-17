@@ -1,5 +1,5 @@
 class PolygonShape{
-  constructor(vertices){
+  constructor(vertices){  //still need to add convex validation
     this.vertices = vertices;
     this.setCentroidOrigin();
   }

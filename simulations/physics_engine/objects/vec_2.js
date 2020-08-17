@@ -12,8 +12,8 @@ class Vec2{
   static dotProduct(vector_1, vector_2){
     return vector_1.x * vector_2.x + vector_1.y * vector_2.y;
   }
-  static crossProduct(vector_1, vector_2){
-    return vector_1.x * vector_2.y - vector_1.y * vector_2.x;
+  static crossProduct(vector_1, vector_2){ //gets cross product of two 2d vectors (along world plane).
+    return vector_1.x * vector_2.y - vector_1.y * vector_2.x; //Scalar result is the magnitude of the reulting vector pointing out of world plane (z direction)
   }
   static zCrossProduct(scalar, vector){ //cross product of a vector pointing perpendicular to world plane with vector parallel to world plane
     return new Vec2(-scalar * vector.y, scalar * vector.x);

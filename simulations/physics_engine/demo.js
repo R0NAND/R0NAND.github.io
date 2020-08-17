@@ -1,4 +1,4 @@
-var canvas = document.getElementById("introSim");
+var canvas = document.getElementById("demo");
 var ctx = canvas.getContext("2d");
 canvas.addEventListener('mousedown', GuiInterface.onClick, false);
 canvas.addEventListener('mousemove', GuiInterface.onMove, false);
@@ -12,59 +12,59 @@ var dt = 1 / 60;
 var ronan_world = new World(dt);
 ronan_world.setGravity(new Vec2(0, 9.8));
 var test_fixture_1 = new Fixture(new CircleShape(0, 0, 10), 1, 0.3, 0.5); 
-var test_body_1 = new RigidBody(50, 25, 0, 0, 0, 0);
+var test_body_1 = new RigidBody(150, 25, 0, 0, 0, 0);
 test_body_1.addFixture(test_fixture_1);
 
 var rhombus_vertices = [new Vec2(-20, 0), new Vec2(0, -10), new Vec2(20, 0), new Vec2(0, 10)];
 var test_fixture_2 = new Fixture(new PolygonShape(rhombus_vertices), 1, 0.3, 0.5);
-var test_body_2 = new RigidBody(50, 125, 4, 4, 2, 0);
+var test_body_2 = new RigidBody(150, 125, 4, 4, 2, 0);
 test_body_2.addFixture(test_fixture_2);
 
 var test_fixture_3 = new Fixture(new CircleShape(0, 0, 10),  1, 0.3, 0.5); 
-var test_body_3 = new RigidBody(150, 25, -4, 4, 0, 0);
+var test_body_3 = new RigidBody(250, 25, -4, 4, 0, 0);
 test_body_3.addFixture(test_fixture_3);
 
 var triangle_vertices = [new Vec2(0, -20), new Vec2(10, 10), new Vec2(-10, 10)];
 var test_fixture_4 = new Fixture(new PolygonShape(triangle_vertices),  1, 0.3, 0.5);
-var test_body_4 = new RigidBody(150, 100, -4, 4, 0, 0.1);
+var test_body_4 = new RigidBody(250, 100, -4, 4, 0, 0.1);
 test_body_4.addFixture(test_fixture_4);
 
 var box_1_vertices = [new Vec2(-10 + 10, -10 + 10), new Vec2(10 + 10, -10 + 10), new Vec2(10 + 10, 10 + 10), new Vec2(-10 + 10, 10 + 10)];
 var box_1_fixture = new Fixture(new PolygonShape(box_1_vertices), 1, 0.3, 0.5);
-var box_1 = new RigidBody(35, 75, 0, 0, 0, 1);
+var box_1 = new RigidBody(135, 75, 0, 0, 0, 1);
 box_1.addFixture(box_1_fixture);
 
 var box_2_vertices = [new Vec2(-10, -10), new Vec2(10, -10), new Vec2(10, 10), new Vec2(-10, 10)];
 var box_2_fixture = new Fixture(new PolygonShape(box_2_vertices), 1, 0.3, 0.5);
-var box_2 = new RigidBody(80, 75, 0, 0, 0, -1);
+var box_2 = new RigidBody(180, 75, 0, 0, 0, -1);
 box_2.addFixture(box_2_fixture);
 
 var box_3_vertices = [new Vec2(-10, -10), new Vec2(10, -10), new Vec2(10, 10), new Vec2(-10, 10)];
 var box_3_fixture = new Fixture(new PolygonShape(box_3_vertices), 1, 0.3, 0.5);
-var box_3 = new RigidBody(125, 75, 0, 0, 0, 1);
+var box_3 = new RigidBody(225, 75, 0, 0, 0, 1);
 box_3.addFixture(box_3_fixture);
 
 var box_4_vertices = [new Vec2(-10, -10), new Vec2(10, -10), new Vec2(10, 10), new Vec2(-10, 10)];
 var box_4_fixture = new Fixture(new PolygonShape(box_4_vertices), 1, 0.3, 0.5);
-var box_4 = new RigidBody(170, 75, 0, 0, 0, -1);
+var box_4 = new RigidBody(270, 75, 0, 0, 0, -1);
 box_4.addFixture(box_4_fixture);
 
 
 var platform_vertices = [new Vec2(90, -10), new Vec2(90, 10), new Vec2(-90, 10), new Vec2(-90, -10)];
 var test_platform_fixture = new Fixture(new PolygonShape(platform_vertices), 1, 0.3, 0.5);
-var test_platform = new RigidBody(100, 170, 0, 0, 0, 0);
+var test_platform = new RigidBody(200, 170, 0, 0, 0, 0);
 test_platform.addFixture(test_platform_fixture);
 test_platform.setStatic();
 
 var left_wall_vertices = [new Vec2(0, 0), new Vec2(10, 0), new Vec2(10, 100), new Vec2(0, 100)];
 var left_wall_fixture = new Fixture(new PolygonShape(left_wall_vertices), 1, 0.3, 0.5);
-var left_wall = new RigidBody(0, 125, 0, 0, 0, 0);
+var left_wall = new RigidBody(104, 125, 0, 0, 0, 0);
 left_wall.addFixture(left_wall_fixture);
 left_wall.setStatic();
 
 var right_wall_vertices = [new Vec2(0, 0), new Vec2(10, 0), new Vec2(10, 100), new Vec2(0, 100)];
 var right_wall_fixture = new Fixture(new PolygonShape(right_wall_vertices), 1, 0.3, 0.5);
-var right_wall = new RigidBody(200, 125, 0, 0, 0, 0);
+var right_wall = new RigidBody(296, 125, 0, 0, 0, 0);
 right_wall.addFixture(right_wall_fixture);
 right_wall.setStatic();
 
