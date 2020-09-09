@@ -1,0 +1,9 @@
+class KdTree{
+  constructor(){
+    
+  }
+  insert(){
+
+  }
+  
+}
