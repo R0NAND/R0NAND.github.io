@@ -48,23 +48,24 @@ class Boid{
     }
   }
   boundaries(){ //THIS IS CURRENTLY HARDCODED. FIX LATER
+    var turn_factor = 2;
     if(this.location[0] < -100){
-      this.new_velocity[0] = 200;
+      this.new_velocity[0] += turn_factor;
     }
     if(this.location[0] > 100){
-      this.new_velocity[0] = -200;
+      this.new_velocity[0] -= turn_factor;
     }
     if(this.location[1] < -100){
-      this.new_velocity[1] = 200;
+      this.new_velocity[1] += turn_factor;
     }
     if(this.location[1] > 100){
-      this.new_velocity[1] = -200;
+      this.new_velocity[1] -= turn_factor;
     }
     if(this.location[2] < -100){
-      this.new_velocity[2] = 200;
+      this.new_velocity[2] += turn_factor;
     }
     if(this.location[2] > 100){
-      this.new_velocity[2] = -200;
+      this.new_velocity[2] -= turn_factor;
     }
   }
   step(timestep){
