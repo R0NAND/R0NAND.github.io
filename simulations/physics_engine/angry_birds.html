@@ -1,0 +1,63 @@
+<style>
+  .content {
+    max-width: 800px;
+    margin: auto;
+  }
+</style>
+<body>
+
+<div class="content">
+  <h1>Ronan's Physics Engine Demonstration</h1>
+  <div style="display:flex;">  
+    <div style="width:40ch;margin-right:10px;">
+      <p>I've set up a basic demolition themed demonstration for my physics engine. 
+      You can drag and throw the floating projectile below with the mouse (mobile is not supported).
+      You can also modify the projectile's parameters with the adjacent toggles. Bewarned that this 
+      physics engine is not fully stable for all scenarios, and you are very likely to encounter 
+      some weird behavior as you experiment with it.</p>
+    </div>
+    <div style="margin-bottom:10px;margin-top:auto;">
+      <input type="checkbox" id="showAABB" name="show_aabb" value="show_aabb">
+      <label for="vehicle1"> Show AABB Tree</label><br>
+      <h4>Projectile Properties</h4>
+      <input type="radio" id="circle" name="shape_type" value="circle" checked>
+      <label for="circle">Circle</label>
+      <input type="radio" id="triangle" name="shape_type" value="triangle">
+      <label for="circle">Triangle</label>
+      <input type="radio" id="square" name="shape_type" value="square">
+      <label for="circle">Square</label>
+
+
+      <div class="slidecontainer">
+          <label for="size">Size: </label>
+          <input type="range" min="50" max="100" value="75" class="slider" id="size"><br>
+          <label for="density">Density: </label>
+          <input type="range" min="50" max="150" value="100" class="slider" id="density"><br>
+          <label for="restitution">Restitution: </label>
+          <input type="range" min="0" max="100" value="50" class="slider" id="restitution"><br>
+          <label for="friction">Friction: </label>
+          <input type="range" min="0" max="100" value="50" class="slider" id="friction"><br>
+      </div>
+    </div>
+  </div>
+
+    <!--<input type="checkbox" id="isStatic" name="static_shape" value="Static">
+    <label for="vehicle1"> Static</label><br>-->
+    
+    <canvas id="demo" style="border-style: solid" width="800" height="400">
+        <script src="objects/vec_2.js"></script>
+        <script src="objects/gui_interface.js"></script>
+        <script src="objects/aabb.js"></script>
+        <script src="objects/aabb_tree.js"></script>
+        <script src="objects/collision_detector.js"></script>
+        <script src="objects/collision_handler.js"></script>
+        <script src="objects/rigid_body.js"></script>
+        <script src="objects/shapes/circle_shape.js"></script>
+        <script src="objects/shapes/polygon_shape.js"></script>
+        <script src="objects/collision_manifold.js"></script>
+        <script src="objects/fixture.js"></script>
+        <script src="objects/world.js"></script>
+        <script src="objects/spring.js"></script>
+        <script src="angry_birds.js"></script>
+    </canvas>
+</div>

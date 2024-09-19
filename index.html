@@ -1,155 +1,148 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ronan Website</title>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="ronan_website.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ronan Website</title>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <link rel="stylesheet" type="text/css" href="css/ronan_website.css">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
     </head> 
-    <body class="background_deep_blue">
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark  background_deep_green">
-            <a class="navbar-brand" href="#">Ronan Tunney</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="#About">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#Projects">Projects</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#Contact">Contact</a>
-                </li>
-              </ul>
+    <body>
+      <section class="showcase-container">
+        <video autoplay muted loop id="myVideo">
+          <source src="imgs/blue_paint.mp4" type="video/mp4">
+        </video>
+        <div class="intro-card">
+          <div class="intro-card-subject">Ronan Tunney</div>
+          <div class="intro-card-flex">
+            <div class="intro-card-thumbnail"><img src="imgs/ronan_main_pic.jpg" height="200px"></div>
+              <div class="intro-card-description">
+                <p style="text-align:left;">
+                Hi! I'm a mechanical engineer from the University of Waterloo who mostly works as a 
+                software developer these days. I initially got into programming through my passion 
+                for physics simulations, and since then have built up professional work experience in 
+                the fields of robotics and data engineering. This page serves as a 
+                showcase for some of my additional personal projects.
+                </p>
+              </div>
             </div>
-          </nav>
-
-        <div class="container-fluid col-lg-6 background_normal_green pb-2 text-center">
-          <h1 id="About">About</h1>
-          <p>Hello there! I'm a recent mechanical engineering graduate from the University of Waterloo 
-            who loves exploring ideas and learning how the world works. I have internship 
-            experience spanning a variety of fields from aerospace, to construction, to 
-            software development. Through it all I've discovered that I love working on
-            difficult yet meaningful problems. You can find some of my personal projects 
-            below. Stay tuned for more to come!</p>
-            <img src="imgs/ronan_main_pic.jpg" class="img-fluid rounded-circle w-50" alt="Ronan_Tunney">
-        </div>
-
-        <div class="container-fluid col-lg-6 background_pale_green pb-2 text-center">
-          <div class=" col-lg-12 text-center">
-              <h1 id="Projects">Projects</h1>
-              <p>I believe that the best way to learn anything is to ask hard
-                questions and reason out the answers for yourself. These questions
-                can often prove more elusive than the answers themselves though. This is why I enjoy
-                embarking on challenging projects which force me to explore the unkown and figure things out for myself.
+          </div>
+        </section>
+      </div>
+      <div id="travels">
+      <div class="project-card">
+        <div class="project-card-subject">Interactive Travel Map</div>
+          <div class="project-card-flex">
+            <div class="project-card-thumbnail"><img src="imgs/travel_map_thumbnail.jpg" height="200px"></div>
+            <div class="project-card-description">
+              <p style="text-align:left;">
+                I've spent the last few months on the road; visiting many of the national parks and cities 
+                across the USA. I took lots of pictures along the way, and realized I could use the 
+                metadata from most of the resulting JPEGs to create an intereactive travel map. It's still
+                a bit of a work in progress, but you can play around with it for yourself 
+                <a href="travels/index.html">here.<a>
               </p>
-              <div class="row text-left">
-                <div class="col-lg-6">
-                  <h2>Robot Simulations</h2>
-                  <p>Programming Robot behaviour and algorithms is a lot of fun, but unfortunately, the cost and risks 
-                    associated with them can be a limitation. That's why I thought I'd try simulating them! Using ROS and 
-                    the Gazebo physics engine, I've been able to set up a few different machines in a virtual environment. 
-                    Now I just need to program them, so stay tuned.
-                  </p>
-                  <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive" src="https://www.youtube.com/embed/SqcZDt6xKNg">
-                    </iframe>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <h2>Physics Engine</h2>
-                  <p>I've always been fascinated by physics simulations, and recently took the plunge into developping 
-                     a fully fledged rigid body physics engine for educational purposes (both for myself and others). 
-                     I chose to write it in Javascript to make it easier to understand, modify and share. You can play 
-                     around with it for yourself by clicking the link at the bottom of my webpage.
-                  </p>
-                  <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive" src="https://youtube.com/embed/J2S7tfLb2A8">
-                    </iframe>
-                  </div>
-                </div>
-              </div>
-              <div class="row text-left">
-                <div class="col-lg-6">
-                  <h2>Fluid Simulations</h2>
-                  <p>I've always found fluid dynamics really interesting and recently decided
-                    to take my learning beyond the classroom by simulating their behaviour in C++. One 
-                    <a href="https://github.com/R0NAND/euler_fluid_simulation">method</a> 
-                    relied on representing the fluid as a velocity field that interacted with 
-                    itself over time to create the familiar swirls we see when mixing two fluids
-                    together. The other method used a technique called <a href="https://github.com/R0NAND/particle_hydrodynamics">
-                    Smooth Particle Hydrodynamics</a> where thousands of particles were finely tuned to interact with 
-                    each other in such a way that their collective behaviour would adequately 
-                    emulate the motion of an everyday fluid.
-                  </p>
-                  <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive" src="https://www.youtube.com/embed/wm4oHIMzqq8">
-                    </iframe>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <h2>Mini Segway</h2>
-                  <p>This was a fun little project that I put together with an arduino, battery, 
-                    two brushed DC motors and some scrap material I had lying around the house. 
-                    The overall concept is quite simple. If the robot begins to lean forward, 
-                    spin the wheels even more forward, so it starts leaning the other way and vice 
-                    versa. This was implemented using a PID controller that read input from an 
-                    MEMS gyroscope.</p>
-                    <div class="embed-responsive embed-responsive-4by3">
-                      <iframe class="embed-responsive" src="https://www.youtube.com/embed/ncuaXxe6Qv0">
-                      </iframe>
-                    </div>
-                </div>
-              </div>
-              <div class="row text-left">
-                <div class="col-lg-6">
-                  <h2>LED-Cube</h2>
-                  <p>This project took an awfully long time to solder, but was well worth the effort once
-                    it could finally make 3D animations. It consisted of a 5x5x5 matrix of red LEDs.
-                    the 25 vertical columns were hooked up to 25 independent arduino mega outputs, and each
-                    layer was connected to ground via 5 independently controlled transistors. This setup
-                    allowed for each 5x5 layer to be lit in a unique configuration one at a time. A viewer's 
-                    persistence of vision would then automatically blend these alternating layers together into a 3D animation.</p>
-                    <div class="embed-responsive embed-responsive-4by3">
-                      <iframe class="embed-responsive" src="https://www.youtube.com/embed/vzeN1L-n64c">
-                      </iframe>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                  <h2>Quadcopter</h2>
-                  <p>Still a work in progress, but I figured I should include a video of it taking off. 
-                    The crash is mostly attributed to my poor piloting skills, but the controls and center of mass 
-                    do still require a fair amount of tuning. The controller is an Arduino Uno recieving input from a 
-                    radio and gyroscope. The Arduino processes this data to update the speed of the propellors at 250 Hz.
-                  </p>
-                    <div class="embed-responsive embed-responsive-4by3">
-                      <iframe class="embed-responsive" src="https://www.youtube.com/embed/BKyYdnfE7Kg">
-                      </iframe>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <h1 id="Projects">Simulations</h1>
-            <p>I'm currently working on several different physics simulations in Javascript to extend my knowledge in physics, 
-                programming and computational science. This section should get updated regularly as I commit changes to my webpage.
-                None of the programs below are completed, but should give an idea of what I'm working towards.
-            <h3><a href="simulations/physics_engine/demo.html">Rigid Body Physics Engine</a></h2>
-            <h3><a href="simulations/wave_simulations/wave_simulation.html">Wave Art</a></h2>
-            <h3><a href="simulations/swarm_simulation/swarm_simulation.html">3D Swarm/Boid Simulation</a></h2>
-            </p>
-        </div>
-    </div>
-        
-        <div class="container-fluid col-lg-6 background_black pb-2 background_white_green">
-          <div class="container-fluid col-lg-6 background_black pb-2 text-center">
-            <h1 id="Contact">Contact</h1>
-            <p>Curious about anything on my page?</p>
-            <p>Just send me a message at rjtunney@uwaterloo.ca</p>
-            <p>Cheers,</p>
-            <p>Ronan</p>
+            </div>
           </div>
         </div>
-    </body>
+      </div>
+      <div id="physics-engine">
+        <div class="project-card" style="margin-left:auto;">
+          <div class="project-card-subject">Physics Engine</div>
+          <div class="project-card-flex">
+            <div class="project-card-image"><img src="imgs/physics_engine.jpg" height="200px"></img></div>
+            <div class="project-card-description">
+              <p style="text-align:left;">
+              During the summer of 2020; I found myself stuck inside with lots of free time, so naturally used it 
+              to build a rigid body physics engine in javascript (I know....). It's not the most stable or performant
+              engine on the market, but it served as a great learning experience in building complex modular software.
+              You can play around with it for yourself at this the angry birds inspired demnstration I've set up 
+              <a href="simulations/physics_engine/angry_birds.html">here.</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="fluid-simulations">
+      <div class="project-card">
+        <div class="project-card-subject">Fluid Simulations</div>
+          <div class="project-card-flex">
+            <div class="project-card-thumbnail">
+              <iframe class="embed-responsive" src="https://www.youtube.com/embed/wm4oHIMzqq8"></iframe>
+            </div>
+            <div class="project-card-description">
+              <p style="text-align:left;">
+              Fluid dynamics was one of the reasons I chose to study mechanical engineering, and during my 
+              undergrad, I decided to take my learning beyond the classroom by simulating their behaviour in 
+              C++. One <a href="https://github.com/R0NAND/euler_fluid_simulation">method</a> 
+              relied on representing the fluid as a velocity field that interacts with 
+              itself over time to create the familiar swirls we see when mixing two fluids
+              together. The other method used a technique called <a href="https://github.com/R0NAND/particle_hydrodynamics">
+              Smooth Particle Hydrodynamics</a> where thousands of particles were finely tuned to interact with 
+              each other in such a way that their collective behaviour would adequately 
+              emulate the motion of an everyday fluid.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="robot-simulations">
+        <div class="project-card" style="margin-left:auto;">
+          <div class="project-card-subject">Robot Simulations</div>
+            <div class="project-card-flex">
+            <div class="project-card-thumbnail">
+              <iframe class="embed-responsive" src="https://www.youtube.com/embed/SqcZDt6xKNg"></iframe>
+              </iframe>
+            </div>
+            <div class="project-card-description">
+              <p>Programming Robot behaviour and algorithms is a lot of fun, but unfortunately, the cost and risks 
+                associated with them can be a limitation. That's why I thought I'd try simulating them! Using ROS and 
+                the Gazebo physics engine, I've been able to set up a few different machines in a virtual environment 
+                for further programming and experimentation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="mechatronics-projects">
+        <div id="mechatronics-header">
+          <h1 style="text-align:center">Mechatronics Projects</h1>
+          <p>During my undergrad, I'd spent some time tinkering with electronics on the side to complement
+            my studies. I've included some videos of these projects below. They were all built using an Arduino
+            and various other basic electronic components.
+          </p>
+        </div>
+        <div id="mechatronics-projects-flex">
+          <div>
+            <h2 style="text-align:center">Mini Segway</h2>
+            <div class="embed-responsive embed-responsive-4by3">
+              <iframe class="embed-responsive" src="https://www.youtube.com/embed/ncuaXxe6Qv0">
+              </iframe>
+            </div>
+          </div>
+          <div>
+            <h2 style="text-align:center">LED-Cube</h2>
+            <div class="embed-responsive embed-responsive-4by3">
+              <iframe class="embed-responsive" src="https://www.youtube.com/embed/vzeN1L-n64c">
+              </iframe>
+            </div>
+          </div>
+          <div>
+            <h2 style="text-align:center">Quadcopter</h2>
+            <div class="embed-responsive embed-responsive-4by3">
+              <iframe class="embed-responsive" src="https://www.youtube.com/embed/BKyYdnfE7Kg">
+              </iframe>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </body>
 </html>

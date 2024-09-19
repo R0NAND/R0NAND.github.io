@@ -52,7 +52,7 @@ class World{
   }
   draw(ctx){
     ctx.fillStyle = "white";
-    ctx.clearRect(0, 0, 450, 450);
+    ctx.clearRect(0, 0, 1000, 1000);
     for (var i = 0; i < this.bodies.length; i++){
       this.bodies[i].draw(ctx);
     }

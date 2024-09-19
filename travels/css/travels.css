@@ -1,0 +1,26 @@
+body,html {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.travels-flexbox{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.travels-flexbox > div{
+  width: 50vw;
+  height: 100vh;
+  background: mintcream;
+}
+
+@media only screen and (max-width: 800px) {
+  .travels-flexbox > div {
+    width: 100vw;
+    height: 50vh;
+  }
+}

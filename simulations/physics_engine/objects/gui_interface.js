@@ -31,14 +31,14 @@ class GuiInterface{//kinda redundant name I know :p
     }else if(shape_value == "triangle"){
       this.shape = new PolygonShape([new Vec2(0,0), new Vec2(size, 0), new Vec2(size / 2, size * 0.866)]);
     }
-    this.shape.draw(this.canvas, new Vec2(30, 30), 0);
+    this.shape.draw(this.canvas, new Vec2(125, 200), 0);
   }
 
   generateBody(){
     var new_body_fixture = new Fixture(this.shape, 0.01 * document.getElementById(this.density_slider).value,
                                                  0.01 * document.getElementById(this.friction_slider).value, 
                                                  0.01 * document.getElementById(this.restitution_slider).value); 
-    var new_body = new RigidBody(30, 30, 0, 0, 0, 0);
+    var new_body = new RigidBody(125, 200, 0, 0, 0, 0);
     new_body.addFixture(new_body_fixture);
     this.new_body = false;
     this.holding = true;
@@ -46,7 +46,7 @@ class GuiInterface{//kinda redundant name I know :p
   }
 
   static onClick(event){
-    if(mousePos.x < 50 && mousePos.y < 50){
+    if(Math.sqrt(Math.pow(mousePos.x - 125, 2) + Math.pow(mousePos.y - 200, 2)) < 15){
       clicked = true;
     }
   }

@@ -1,24 +1,158 @@
-.background_white_green{
-    background-color: #edf5e1;
-    color: #05386b;
-  }
+:root {
+  --biceblue: #226994;
+  --cambridgeblue: #6B9C85;
+  --bluemunsell: #438EA1;
+  --viridian: #509183;
+  --ashgrey: #A7B4A7;
+}
 
-  .background_pale_green{
-    background-color: #8ee4af;
-    color: #05386b;
-  }
+#travels{
+  background-color: var(--cambridgeblue);
+  padding: 20px;
+}
+#physics-engine{
+  background-color: var(--ashgrey);
+  padding: 20px;
+}
+#fluid-simulations{
+  background-color: var(--biceblue);
+  padding: 20px;
+}
+#robot-simulations{
+  background-color: var(--cambridgeblue);
+  padding: 20px;
+}
+#mechatronics-projects{
+  background-color: var(--viridian);
+  padding: 20px;
+}
 
-  .background_normal_green  {
-    background-color: #5cdb95;
-    color: #05386b;
-  }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .background_deep_green{
-    background-color: #379683;
-    color: #05386b;
-  }
+.showcase-container{
+  width: 100%;
+}
 
-  .background_deep_blue{
-    background-color: #05386b;
+.showcase-container video{
+  z-index: -999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 1200px;
+}
+
+.project-card {
+  max-width: 900px;
+  display: grid;
+  column-gap: 10px;
+  row-gap: 10px;
+  grid-template-columns: auto;
+  background-color: rgba(255,255,255,0.9);
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 4px 8px 6px #888888;
+}
+
+.project-card-subject{
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+}
+
+.project-card-flex{
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 20px;  
+  vertical-align: top;
+}
+
+.project-card-thumbnail{
+  margin: auto;
+}
+
+.project-card-description{
+  margin: auto;
+  width: clamp(45ch, 50%, 75ch);
+}
+
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.intro-card {
+  margin: auto;
+  color:antiquewhite;
+  display: grid;
+  max-width: 900px;
+  column-gap: 10px;
+  row-gap: 10px;
+  grid-template-columns: auto;
+  background-color: rgba(0,0,0,0.75);
+  padding: 30px;
+  border-radius: 45px;
+  animation: fadeIn 3s;
+  margin-top: calc((100vh - 320px) / 2);
+  margin-bottom: calc((100vh - 320px) / 2);
+}
+
+@media only screen and (max-width: 800px) {
+  .intro-card {
+    margin: 10px;
   }
-  
+}
+
+.intro-card-subject{
+  font-weight: bold;
+  font-size: 50px;
+  margin: auto;
+}
+
+.intro-card-flex{
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 20px;  
+  vertical-align: top;
+}
+
+
+.intro-card-thumbnail{
+  margin: auto;
+  width: 200px;
+}
+
+.intro-card-thumbnail > img{
+  border-radius: 50%;
+}
+
+.intro-card-description{
+  margin: auto;
+  width: clamp(45ch, 50%, 75ch);
+}
+
+#mechatronics-projects-flex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#mechatronics-projects-flex > div{
+  border-radius: 15px;
+  background-color: rgba(255,255,255,0.9);
+  padding: 10px;
+  box-shadow: 4px 8px 6px #888888;
+  margin: 10px;
+}
+
+#mechatronics-header{
+  margin: auto;
+  background-color: rgba(255,255,255,0.9);
+  width: clamp(45ch, 50%, 75ch);
+  border-radius: 15px;
+  padding: 15px;
+}
