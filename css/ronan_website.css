@@ -25,6 +25,7 @@
 #mechatronics-projects{
   background-color: var(--viridian);
   padding: 20px;
+  font-size: 20px;
 }
 
 *{
@@ -34,16 +35,37 @@
 }
 
 .showcase-container{
+  top: 0;
+  bottom: 0;
   width: 100%;
+  height: 100%; 
+  overflow: hidden;
 }
 
 .showcase-container video{
-  z-index: -999;
   position: absolute;
+  z-index: -999;
   top: 0;
   left: 0;
-  width: 100%;
-  min-width: 1200px;
+  width: 100%; 
+  height: 100%;
+  object-fit: cover;
+}
+
+.intro-card {
+  margin: auto;
+  color:antiquewhite;
+  display: grid;
+  max-width: 900px;
+  column-gap: 10px;
+  row-gap: 10px;
+  grid-template-columns: auto;
+  background-color: rgba(0,0,0,0.75);
+  padding: 30px;
+  border-radius: 45px;
+  animation: fadeIn 3s;
+  margin-top: 150px;
+  margin-bottom: 150px;
 }
 
 .project-card {
@@ -69,11 +91,13 @@
   flex-wrap: wrap;
   font-size: 20px;  
   vertical-align: top;
+  justify-content: center;
 }
 
 .project-card-thumbnail{
   margin: auto;
 }
+
 
 .project-card-description{
   margin: auto;
@@ -84,21 +108,6 @@
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
-}
-.intro-card {
-  margin: auto;
-  color:antiquewhite;
-  display: grid;
-  max-width: 900px;
-  column-gap: 10px;
-  row-gap: 10px;
-  grid-template-columns: auto;
-  background-color: rgba(0,0,0,0.75);
-  padding: 30px;
-  border-radius: 45px;
-  animation: fadeIn 3s;
-  margin-top: calc((100vh - 320px) / 2);
-  margin-bottom: calc((100vh - 320px) / 2);
 }
 
 @media only screen and (max-width: 800px) {
